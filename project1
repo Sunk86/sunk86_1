@@ -1,0 +1,43 @@
+# ---------------------------------
+# GitLab CI/CD Pipeline Basics
+# Created by A S 2024
+# ---------------------------------
+
+stages:
+    - build
+    - test
+    - deploy
+
+variables:
+    OWNER_NAME: "A S"
+    CICD_VERSION: "v1.0"
+    LOG_FILE_NAME: "log.txt"
+
+build_job:
+    stage: build
+    script:
+        - echo "--- Build Started ---"
+        - echo "Building..." >> $LOG_FILE_NAME
+        - echo "--- Build Completed ---"
+
+test_job1:
+    stage: test
+    script:
+        - echo "--- Test1 Started ---"
+        - echo "Testing1..." >> $LOG_FILE_NAME
+        - echo "--- Test1 Completed ---"
+
+test_job2:
+    stage: test
+    script:
+        - echo "--- Test2 Started ---"
+        - echo "Testing2..." >> $LOG_FILE_NAME
+        - echo "--- Test2 Completed ---"
+
+deploy_to_dev_job:
+    stage: deploy
+    script:
+        - echo "--- Deploy to DEV Started ---"
+        - echo "Deploying to DEV..." >> $LOG_FILE_NAME
+        - echo "--- Deploy to DEV Completed ---"
+        - cat $LOG_FILE_NAME
